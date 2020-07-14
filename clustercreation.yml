@@ -1,0 +1,18 @@
+apiversion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata: 
+  name: hostcluster
+  region: ap-south-1
+nodeGroups: 
+  - 
+    desiredCapacity: 3
+    instanceType: t2.micro
+    name: drupal
+    ssh: 
+      publicKeyName: mynewfirstoskey
+  - 
+    desiredCapacity: 1
+    instanceType: t2.micro
+    name: mysql
+    ssh: 
+      publicKeyName: mynewfirstoskey
