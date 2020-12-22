@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "drupal-ingress"
+  namespace: "eksdrupal"
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+  labels:
+    app: drupal-ingress
+spec:
+  rules:
+    - host: uk.dockeroncloud.com
+      http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: "drupal"
+              servicePort: 80
+    - host: usa.dockeroncloud.com
+      http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: "usa-drupal"
+              servicePort: 80

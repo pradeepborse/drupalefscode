@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: drupal
+  name: usa-drupal
   labels:
-    app: drupal
+    app: usa-drupal
 spec:
   ports:
     - port: 80
@@ -11,34 +11,34 @@ spec:
       protocol: TCP
   type: NodePort
   selector:
-    app: drupal
+    app: usa-drupal
     tier: frontend
 ---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: drupal
+  name: usa-drupal
   labels:
-    app: drupal
+    app: usa-drupal
 spec:
   selector:
     matchLabels:
-      app: drupal
+      app: usa-drupal
       tier: frontend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: drupal
+        app: usa-drupal
         tier: frontend
     spec:
       containers:
       - image: drupal:8-apache
-        name: drupal
+        name: usa-drupal
         ports:
         - containerPort: 80
-          name: drupal
+          name: usa-drupal
         volumeMounts:
         - name: drupal-persistent-storage
           mountPath: /var/www/html/modules
@@ -51,4 +51,4 @@ spec:
       volumes:
       - name: drupal-persistent-storage
         persistentVolumeClaim:
-          claimName: eks-drupal
+          claimName: usa-eks-drupal

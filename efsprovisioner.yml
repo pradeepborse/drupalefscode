@@ -19,9 +19,9 @@ spec:
           image: quay.io/external_storage/efs-provisioner:v0.1.0
           env:
             - name: FILE_SYSTEM_ID
-              value: fs-0fb025de
+              value: fs-6b3656e9
             - name: AWS_REGION
-              value: ap-south-1
+              value: us-east-1
             - name: PROVISIONER_NAME
               value: eks-drupal/aws-efs
           volumeMounts:
@@ -30,5 +30,5 @@ spec:
       volumes:
         - name: pv-volume
           nfs:
-            server: fs-0fb025de.efs.ap-south-1.amazonaws.com
+            server: fs-6b3656e9.efs.us-east-1.amazonaws.com
             path: /

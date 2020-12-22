@@ -10,4 +10,5 @@ resources:
    - rolebinding.yml
    - storageclass.yml
    - drupaldeploy.yml
+   - usdrupaldeploy.yml
    - mysqldeploy.yml

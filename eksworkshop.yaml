@@ -1,0 +1,26 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: pradeep-eksworkshop-eksctl
+  region: us-east-1
+  version: "1.17"
+
+availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
+
+managedNodeGroups:
+- name: nodegroup
+  instanceType: t2.small
+  desiredCapacity: 1
+  ssh:
+    allow: true
+    publicKeyName: docker_pradeep
+
+# To enable all of the control plane logs, uncomment below:
+# cloudWatch:
+#  clusterLogging:
+#    enableTypes: ["*"]
+
+secretsEncryption:
+  keyARN: arn:aws:kms:us-east-1:543816070942:key/7f88d490-38fa-489e-a5f9-2519c0d9cea3
